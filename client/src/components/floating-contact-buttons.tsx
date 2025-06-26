@@ -18,7 +18,7 @@ export default function FloatingContactButtons() {
       {/* WhatsApp Button */}
       <button
         onClick={handleWhatsApp}
-        className="bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 group"
+        className="whatsapp-button text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 group"
         aria-label="Contact us on WhatsApp"
       >
         <MessageCircle className="w-6 h-6" />
@@ -30,7 +30,7 @@ export default function FloatingContactButtons() {
       {/* Call Button */}
       <button
         onClick={handleCall}
-        className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 group"
+        className="call-button text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 group"
         aria-label="Call us"
       >
         <Phone className="w-6 h-6" />

@@ -10,20 +10,28 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 174 77% 56%; /* Silai Properties teal */
-    --primary-foreground: 0 0% 98%;
-    --secondary: 42 87% 55%; /* Silai Properties gold */
+    --primary: 172 100% 50%; /* Silai Properties teal #00CFC1 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 43 100% 59%; /* Silai Properties gold #FFD700 */
     --secondary-foreground: 222.2 84% 4.9%;
     --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 174 77% 56%;
-    --accent-foreground: 222.2 84% 4.9%;
+    --accent: 172 100% 50%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 174 77% 56%;
+    --ring: 172 100% 50%;
     --radius: 0.5rem;
+    
+    /* Silai Properties brand colors */
+    --silai-teal: #00CFC1;
+    --silai-teal-light: #4ECDC4;
+    --silai-teal-dark: #009B94;
+    --silai-gold: #FFD700;
+    --silai-gold-light: #FFED4E;
+    --silai-gold-dark: #B8860B;
   }
 }
 
@@ -81,47 +89,49 @@
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Gradient backgrounds */
+/* Gradient backgrounds matching Silai Properties logo */
 .gradient-primary {
-  background: linear-gradient(135deg, #4ECDC4 0%, #26D0CE 100%);
+  background: linear-gradient(135deg, var(--silai-teal) 0%, var(--silai-teal-dark) 100%);
 }
 
 .gradient-secondary {
-  background: linear-gradient(135deg, #F4C430 0%, #FFD700 100%);
+  background: linear-gradient(135deg, var(--silai-gold) 0%, var(--silai-gold-dark) 100%);
 }
 
 .gradient-accent {
-  background: linear-gradient(135deg, #4ECDC4 0%, #F4C430 100%);
+  background: linear-gradient(135deg, var(--silai-teal) 0%, var(--silai-gold) 100%);
 }
 
 /* Enhanced buttons */
 .btn-primary-enhanced {
-  background: linear-gradient(135deg, #4ECDC4 0%, #26D0CE 100%);
+  background: linear-gradient(135deg, var(--silai-teal) 0%, var(--silai-teal-dark) 100%);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px 0 rgba(78, 205, 196, 0.25);
+  box-shadow: 0 4px 15px 0 rgba(0, 207, 193, 0.25);
+  color: white;
 }
 
 .btn-primary-enhanced:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px 0 rgba(78, 205, 196, 0.4);
+  box-shadow: 0 8px 25px 0 rgba(0, 207, 193, 0.4);
+  background: linear-gradient(135deg, var(--silai-teal-light) 0%, var(--silai-teal) 100%);
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar with Silai colors */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f8fafc;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--silai-teal) 0%, var(--silai-teal-dark) 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #5a67d8 0%, #6b5b95 100%);
+  background: linear-gradient(135deg, var(--silai-teal-light) 0%, var(--silai-teal) 100%);
 }
 
 /* Loading skeleton animation */
@@ -138,6 +148,86 @@
   animation: shimmer 1.2s ease-in-out infinite;
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 400% 100%;
+}
+
+/* Silai Properties themed components */
+.search-tab.active {
+  background: linear-gradient(135deg, var(--silai-teal) 0%, var(--silai-teal-dark) 100%);
+  color: white;
+  box-shadow: 0 4px 15px 0 rgba(0, 207, 193, 0.25);
+}
+
+.search-tab:hover:not(.active) {
+  background: rgba(0, 207, 193, 0.1);
+  color: var(--silai-teal-dark);
+}
+
+/* Property card enhancements */
+.property-card {
+  border: 1px solid rgba(0, 207, 193, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.property-card:hover {
+  border-color: var(--silai-teal);
+  box-shadow: 0 10px 25px -5px rgba(0, 207, 193, 0.2);
+}
+
+.status-featured {
+  background: linear-gradient(135deg, var(--silai-gold) 0%, var(--silai-gold-dark) 100%);
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.status-popular {
+  background: linear-gradient(135deg, var(--silai-teal) 0%, var(--silai-teal-dark) 100%);
+  color: white;
+  font-weight: 600;
+}
+
+.status-new {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  font-weight: 600;
+}
+
+/* Header enhancements */
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid rgba(0, 207, 193, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.group:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Enhanced form elements */
+input:focus,
+select:focus,
+textarea:focus {
+  ring-color: var(--silai-teal);
+  border-color: var(--silai-teal);
+}
+
+/* Contact buttons with Silai branding */
+.whatsapp-button {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+.call-button {
+  background: linear-gradient(135deg, var(--silai-teal) 0%, var(--silai-teal-dark) 100%);
 }
 
 :root {

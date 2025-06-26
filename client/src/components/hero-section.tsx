@@ -28,7 +28,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative h-screen bg-gradient-to-r from-black/50 to-black/30 overflow-hidden">
+    <section className="relative h-screen overflow-hidden">
       {/* Background Slider */}
       <div className="absolute inset-0">
         {heroImages.map((image, index) => (
@@ -43,6 +43,7 @@ export default function HeroSection() {
               alt={image.alt}
               className="w-full h-full object-cover"
             />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
           </div>
         ))}
       </div>
@@ -50,11 +51,11 @@ export default function HeroSection() {
       {/* Hero Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
         <div className="w-full">
-          <div className="text-center mb-12 animate-slide-in-up">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+          <div className="text-center mb-8 animate-slide-in-up">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
               Find Your Dream Property
             </h1>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-white mb-8 max-w-2xl mx-auto drop-shadow-lg font-medium">
               Discover premium properties across Kenya. Buy, rent, or lease with confidence through our trusted platform.
             </p>
           </div>
