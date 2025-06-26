@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Building, Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import logoImage from "@assets/silai-removebg-preview_1750953932516.png";
 
 export default function Header() {
   const [location] = useLocation();
@@ -48,8 +49,11 @@ export default function Header() {
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center cursor-pointer">
-              <Building className="text-primary text-2xl mr-2" />
-              <span className="text-xl font-bold text-neutral-900">Silai Properties</span>
+              <img 
+                src={logoImage} 
+                alt="Silai Properties" 
+                className="h-12 w-auto mr-2"
+              />
             </div>
           </Link>
 

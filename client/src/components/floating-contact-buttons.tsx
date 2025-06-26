@@ -14,7 +14,7 @@ export default function FloatingContactButtons() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+    <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
       {/* WhatsApp Button */}
       <button
         onClick={handleWhatsApp}
@@ -22,7 +22,7 @@ export default function FloatingContactButtons() {
         aria-label="Contact us on WhatsApp"
       >
         <MessageCircle className="w-6 h-6" />
-        <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+        <span className="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
           WhatsApp Us
         </span>
       </button>
@@ -34,7 +34,7 @@ export default function FloatingContactButtons() {
         aria-label="Call us"
       >
         <Phone className="w-6 h-6" />
-        <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+        <span className="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
           Call Us
         </span>
       </button>

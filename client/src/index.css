@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 174 77% 56%; /* Silai Properties teal */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 42 87% 55%; /* Silai Properties gold */
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 174 77% 56%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 174 77% 56%;
+    --radius: 0.5rem;
+  }
+}
+
 /* Custom animations */
 @keyframes fadeInUp {
   from {
@@ -58,27 +83,27 @@
 
 /* Gradient backgrounds */
 .gradient-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4ECDC4 0%, #26D0CE 100%);
 }
 
 .gradient-secondary {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #F4C430 0%, #FFD700 100%);
 }
 
 .gradient-accent {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: linear-gradient(135deg, #4ECDC4 0%, #F4C430 100%);
 }
 
 /* Enhanced buttons */
 .btn-primary-enhanced {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4ECDC4 0%, #26D0CE 100%);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px 0 rgba(116, 75, 162, 0.25);
+  box-shadow: 0 4px 15px 0 rgba(78, 205, 196, 0.25);
 }
 
 .btn-primary-enhanced:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px 0 rgba(116, 75, 162, 0.4);
+  box-shadow: 0 8px 25px 0 rgba(78, 205, 196, 0.4);
 }
 
 /* Custom scrollbar */
