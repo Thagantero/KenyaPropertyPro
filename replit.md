@@ -86,8 +86,25 @@ The deployment uses auto-scaling capabilities with port 5000 mapped to external 
 
 ## Changelog
 
-- June 26, 2025. Initial setup
+- June 26, 2025: Initial setup with complete property management system
+- June 26, 2025: Added floating WhatsApp and call buttons for better user engagement
+- June 26, 2025: Enhanced with 12 diverse sample properties across Kenya counties
+- June 26, 2025: Improved visual design with animations, gradients, and enhanced hover effects
+
+## Recent Updates
+
+✓ Floating contact buttons with WhatsApp (+254727390238) and call functionality
+✓ Enhanced sample property data with 12 diverse listings across multiple counties
+✓ Improved visual design with custom animations and hover effects
+✓ Enhanced CSS with gradients, custom scrollbar, and loading animations
+✓ Property cards now feature enhanced hover effects and visual improvements
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+
+## Admin Access Information
+
+- Admin URL: `/admin`
+- Username: `admin`
+- Password: `admin123`
