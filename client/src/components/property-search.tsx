@@ -16,6 +16,7 @@ interface SearchFilters {
   bedrooms: string;
   bathrooms: string;
   minArea: string;
+  amenities: string[];
 }
 
 export default function PropertySearch() {
@@ -30,6 +31,7 @@ export default function PropertySearch() {
     bedrooms: "",
     bathrooms: "",
     minArea: "",
+    amenities: [],
   });
 
   const getPriceRanges = () => {

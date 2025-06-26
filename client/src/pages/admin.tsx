@@ -39,6 +39,7 @@ import { z } from "zod";
 export default function Admin() {
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState("dashboard");
+  const [editingProperty, setEditingProperty] = useState<Property | null>(null);
 
   // Queries
   const { data: properties = [] } = useQuery<Property[]>({
@@ -131,6 +132,26 @@ export default function Admin() {
     },
   });
 
+  const updatePropertyMutation = useMutation({
+    mutationFn: async ({ id, data }: { id: number; data: any }) => {
+      const processedData = {
+        ...data,
+        amenities: data.amenities ? data.amenities.split(",").map((a: string) => a.trim()) : [],
+        images: data.images ? data.images.split(",").map((img: string) => img.trim()) : [],
+      };
+      return apiRequest("PATCH", `/api/properties/${id}`, processedData);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/properties"] });
+      toast({ title: "Property updated successfully!" });
+      setEditingProperty(null);
+      propertyForm.reset();
+    },
+    onError: (error: any) => {
+      toast({ title: "Error", description: error.message, variant: "destructive" });
+    },
+  });
+
   const deletePropertyMutation = useMutation({
     mutationFn: async (id: number) => {
       return apiRequest("DELETE", `/api/properties/${id}`);
@@ -154,7 +175,41 @@ export default function Admin() {
     return inquiryDate.getMonth() === now.getMonth() && inquiryDate.getFullYear() === now.getFullYear();
   }).length;
 
-  const totalVisitors = analytics.reduce((sum, a) => sum + a.visitors, 0);
+  const totalVisitors = analytics.reduce((sum, a) => sum + (a.visitors || 0), 0);
+
+  // Edit property handler
+  const handleEditProperty = (property: Property) => {
+    setEditingProperty(property);
+    propertyForm.reset({
+      title: property.title,
+      description: property.description,
+      price: property.price,
+      priceType: property.priceType,
+      propertyType: property.propertyType,
+      county: property.county,
+      location: property.location,
+      bedrooms: property.bedrooms || 1,
+      bathrooms: property.bathrooms || 1,
+      area: property.area || 500,
+      amenities: property.amenities?.join(", ") || "",
+      images: property.images?.join(", ") || "",
+      featured: property.featured || false,
+      popular: property.popular || false,
+      newListing: property.newListing || false,
+      agentName: property.agentName,
+      agentImage: property.agentImage || "",
+      status: property.status,
+    });
+  };
+
+  // Form submission handler
+  const onSubmitProperty = (data: any) => {
+    if (editingProperty) {
+      updatePropertyMutation.mutate({ id: editingProperty.id, data });
+    } else {
+      createPropertyMutation.mutate(data);
+    }
+  };
 
   const statsCards = [
     {
@@ -306,7 +361,7 @@ export default function Admin() {
                     <DialogTitle>Add New Property</DialogTitle>
                   </DialogHeader>
                   <Form {...propertyForm}>
-                    <form onSubmit={propertyForm.handleSubmit((data) => createPropertyMutation.mutate(data))} className="space-y-4">
+                    <form onSubmit={propertyForm.handleSubmit(onSubmitProperty)} className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
                         <FormField
                           control={propertyForm.control}
@@ -509,8 +564,32 @@ export default function Admin() {
                         )}
                       />
 
+                      <FormField
+                        control={propertyForm.control}
+                        name="status"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Status</FormLabel>
+                            <Select onValueChange={field.onChange} value={field.value}>
+                              <FormControl>
+                                <SelectTrigger>
+                                  <SelectValue />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectItem value="active">Available</SelectItem>
+                                <SelectItem value="sold">Sold</SelectItem>
+                                <SelectItem value="rented">Rented</SelectItem>
+                                <SelectItem value="pending">Pending</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
                       <Button type="submit" className="w-full" disabled={createPropertyMutation.isPending}>
-                        {createPropertyMutation.isPending ? "Creating..." : "Create Property"}
+                        {createPropertyMutation.isPending ? "Creating..." : "List Property"}
                       </Button>
                     </form>
                   </Form>
